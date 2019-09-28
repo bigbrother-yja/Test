@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension point="com.teamcenter.rac.util.tc_properties"></extension>
+   
+
+   <!--commands -->
+   <extension point="org.eclipse.ui.commands"> 
+   
+	 <command
+            id="com.gx.yc.customPartList.CustomHandler"
+            name="客户化零件清单">
+ 	 </command>
+   
+     <command
+            id="com.gx.yc.analysisBOMInfluence.AnalysisHandler"
+            name="BOM影响分析">
+ 	 </command>
+     <command
+            id="com.gx.yc.analysisFeatureInfluence.AnalysisHandler"
+            name="特征影响分析">
+ 	 </command>
+ 	 <command
+            id="com.gx.yc.customCopy.CustomCopyHandler"
+            name="BOM行粘贴">
+ 	 </command>
+ 	 
+ 	 
+ 	 <!--
+  	 <command
+            id="com.gx.yc.test.TestHandler"
+            name="测试test">
+ 	 </command>
+ 	 -->
+   </extension>
+   
+   
+   <!-- handlers -->
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+            class="com.gx.yc.analysisBOMInfluence.AnalysisHandler"
+            commandId="com.gx.yc.analysisBOMInfluence.AnalysisHandler">
+      </handler>
+      <handler
+            class="com.gx.yc.analysisFeatureInfluence.AnalysisHandler"
+            commandId="com.gx.yc.analysisFeatureInfluence.AnalysisHandler">
+      </handler>
+      <handler
+            class="com.gx.yc.customCopy.CustomCopyHandler"
+            commandId="com.gx.yc.customCopy.CustomCopyHandler">
+      </handler>
+      
+      
+      <handler
+            class="com.gx.yc.customPartList.CustomHandler"
+            commandId="com.gx.yc.customPartList.CustomHandler">
+      </handler>
+      
+      
+      <!--
+      <handler
+            class="com.gx.yc.test.TestHandler"
+            commandId="com.gx.yc.test.TestHandler">
+      </handler>
+      -->
+   </extension>
+   
+   <!-- menus -->
+   <extension point="org.eclipse.ui.menus">
+   
+      <menuContribution
+              locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+             <menu
+               label="玉柴定制功能"
+               id="yuchaiMenu">
+               
+               <command
+                  commandId="com.gx.yc.customPartList.CustomHandler"
+                  id="com.gx.yc.customPartList.CustomHandler">
+              </command>
+              </menu>
+      </menuContribution>  
+            
+   
+   	  <menuContribution locationURI="popup:org.eclipse.ui.popup.any">
+	  
+    		 <command 
+    		 	commandId="com.gx.yc.analysisBOMInfluence.AnalysisHandler" 
+    		 	icon="icons/analysis_16.png"
+    		 	iconBundleName="com.gx.yc.analysisBOMInfluence.AnalysisHandler">
+ 	   		 	<visibleWhen>
+	                  <reference definitionId="com.teamcenter.rac.pse.inMainView">
+	                  </reference>
+	            </visibleWhen>
+    		 </command>
+     		 <command 
+    		 	commandId="com.gx.yc.analysisFeatureInfluence.AnalysisHandler" 
+    		 	icon="icons/analysis_16.png"
+    		 	iconBundleName="com.gx.yc.analysisFeatureInfluence.AnalysisHandler">
+    		 	<!--
+ 	   		 	<visibleWhen>
+	                  <reference definitionId="com.teamcenter.rac.pca.perspectives.inMainView">
+	                  </reference>
+	            </visibleWhen>
+	            -->
+    		 </command>
+      		 <command 
+    		 	commandId="com.gx.yc.customCopy.CustomCopyHandler" 
+    		 	icon="icons/paste_16.png"
+    		 	iconBundleName="com.gx.yc.customCopy.CustomCopyHandler">
+    		 	<visibleWhen>
+	                  <reference definitionId="com.teamcenter.rac.pse.inMainView">
+	                  </reference>
+	            </visibleWhen>
+    		 </command>
+    		 <!--
+       		 <command 
+    		 	commandId="com.gx.yc.test.TestHandler" 
+    		 	icon="icons/copy_16.png"
+    		 	iconBundleName="com.gx.yc.test.TestHandler">
+    		 </command>
+    		 -->
+	  </menuContribution>
+   </extension>
+
+</plugin>
